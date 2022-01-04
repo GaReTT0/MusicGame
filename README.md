@@ -1,0 +1,39 @@
+# タイトル
+## 環境
+- Windows10
+- Unity(2020.3.7f1)
+
+## ディレクトリ
+- Enemy
+    - Enemyの詳細データが記述されているJsonとEnemyごとのImageが含まれる。
+- Images
+    - ゲーム全体で使用するImage素材が含まれる。
+- Music
+    - ゲームで使用される曲(Song)やSEが含まれる。
+- Prefabs
+    - Unity上で使用されるPrefabが含まれる。今回はノーツのPrefabのみが格納されている。
+- Scripts
+    - Unityで使用されるすべてのScriptが含まれる。
+## コード
+- assets/Scripts/Enemy.cs
+  - 選択された曲に対応したEnemyの情報を取得し、EnemyごとのImageの表示、EnemyのHP管理やダメージ判定を行う。
+- assets/Scripts/EnemyData.cs
+  - EnemyData.jsonファイルを読み込む際に必要となる。jsonファイルの構造を表現している。
+- assets/Scripts/GameManager.cs
+  - enumを用いてcanvasの遷移やゲームクリア、ゲームオーバーの判定を行う。
+- assets/Scripts/MusicDTO.cs
+  - 曲ごとの譜面のjsonファイルを読み込む際に必要となる。jsonファイルの構造を表現している。
+- assets/Scripts/MusicManager.cs
+  - 選択された曲の譜面のjsonを読み込み、ノーツを叩くタイミングや生成場所を確定する。またそれに伴って、曲の再生も行う。
+- assets/Scripts/MusicTextManager.cs
+  - 判定が行われた際の結果のテキストを表示する。
+- assets/Scripts/NotesJudge.cs
+  - キーが押されたタイミングと叩くべきタイミングとの差を計算し、判定の評価とノーツの非表示化を行う。また、曲が終了したかどうかの判定、コンボ数のカウントを行う。
+- assets/Scripts/NotesMove.cs
+  - 指定されたスピードでノーツの移動を行う。
+- assets/Scripts/SEPlayer.cs
+  - レーンごとに鳴るタップ音とEnemyにダメージを与えた際に鳴るダメージ音を再生する。
+- assets/Scripts/SpacenotesJudge.cs
+  - 左右の特殊レーンを叩いた際になるタップ音を異なるものにするためにNotesJudge.csを継承して分けている。
+- assets/Scripts/StageSelect.cs
+  - Buttonにアタッチし、押されたボタンごとに引数を与えることで選択された曲の番号をMusicManagerに引き渡す。
